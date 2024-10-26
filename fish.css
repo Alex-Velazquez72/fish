@@ -11,12 +11,16 @@
     font-family: "Open Sans", sans-serif;
     background-color: lightblue;
     overflow: hidden;
+    display: flex; /* Añadido para centrar el contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+  margin: 0;
   }
   p {
-    position: absolute;
-    left: 40%;
-    top: 40%;
     font-size: 1.5rem;
+    text-align: center;
+    z-index: 1;
   }
   .fish {
     position: absolute;
@@ -54,6 +58,38 @@
     filter: drop-shadow(
       calc(var(--coilSize) * -4) calc(var(--coilSize) / 3) 5px rgba(0, 0, 0, 0.3)
     );
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --coilSize: 10px; /* Reducimos el tamaño del pez */
+    }
+    
+    /* Alineación del texto en el centro de la pantalla */
+    p {
+      font-size: 1rem;
+      padding: 0 10px;
+    }
+  
+    /* Ajustes de tamaño de los peces */
+    .fish {
+      top: -30%; /* Ajuste para que se vea mejor en móviles */
+    }
+  
+    /* Tamaño reducido de la sombra */
+    .fish .koiCoil {
+      width: calc(var(--coilSize) * 0.8);
+      height: calc(var(--coilSize) * 0.8);
+    }
+  }
+
+  @media (max-width: 480px) {
+    p {
+      font-size: 0.9rem;
+      left: 15%;
+      top: 35%;
+      padding: 0 5px;
+    }
   }
   .fish:nth-of-type(2) .koiCoil {
     background-color: white;
